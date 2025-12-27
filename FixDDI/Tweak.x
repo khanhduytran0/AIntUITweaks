@@ -33,7 +33,7 @@ int img4_firmware_execute(void* fw, const void *chip, const void *nonce);
     memcpy((char *)n->i4n_nonce, fakeNonce, IMG4_NONCE_MAX_LENGTH);
     n->i4n_length = strlen(fakeNonce);
     
-    // Create our fake im4m
+    // Provide our pre-signed im4m
     const char *groupPath = container_system_group_path_for_identifier(0, "systemgroup.com.apple.mobilestorageproxy", NULL);
     assert(groupPath != NULL);
     

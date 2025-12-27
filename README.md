@@ -9,5 +9,5 @@ Requires [my Dopamine fork](https://github.com/khanhduytran0/Dopamine/tree/2.x-a
 ## 🚧 Fixing `com.apple.MobileAsset.SystemApp` server
 Stock apps are provided via an internal server which is inaccessible outside of *the falling fruit*. This tweak will redirect the links to use public server instead.
 
-## 🚧 Bypassing EU/Japan Marketplace checks
-The old method of using [eligibility plist](https://github.com/Lrdsnow/EUEnabler) no longer works. This tweak will bypass the checks to allow accessing EU Marketplace apps on "AI" devices.
+## Bypassing EU/Japan Marketplace checks
+The old method of using [eligibility plist](https://github.com/Lrdsnow/EUEnabler) no longer works. This tweak bypasses the checks to allow accessing EU Marketplace apps on "AI" devices.

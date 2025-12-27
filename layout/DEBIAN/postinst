@@ -1,0 +1,3 @@
+#!/bin/sh
+# managedappdistributiond does not honor SIGTERM
+killall -KILL managedappdistributiond

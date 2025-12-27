@@ -24,6 +24,7 @@ const char *container_system_group_path_for_identifier(int, const char *group, v
 errno_t img4_nonce_domain_copy_nonce(const img4_nonce_domain_t *nd, img4_nonce_t *n);
 int img4_firmware_execute(void* fw, const void *chip, const void *nonce);
 
+%group Hook_MobileStorageMounter
 %hookf(errno_t, img4_nonce_domain_copy_nonce, const img4_nonce_domain_t *nd, img4_nonce_t *n) {
     if (nd != IMG4_NONCE_DOMAIN_DDI) {
         return %orig(nd, n);
@@ -65,4 +66,12 @@ BOOL gCalledImg4Execute = NO;
         return kIOReturnSuccess;
     }
     return ret;
+}
+%end
+
+%ctor {
+    NSString *processName = NSProcessInfo.processInfo.processName;
+    if ([processName isEqualToString:@"MobileStorageMounter"]) {
+        %init(Hook_MobileStorageMounter);
+    }
 }

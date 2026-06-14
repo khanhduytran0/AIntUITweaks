@@ -105,17 +105,22 @@ BOOL gCalledImg4Execute = NO;
 // Fix boardID = 9
 %hookf(errno_t, img4_chip_instantiate, const img4_chip_t *chip, img4_chip_instance_t *chip_instance) {
     errno_t result = %orig;
-    if(!result && chip_instance->chid_bord == 9) {
-        chip_instance->chid_bord = 10;
-        chip_instance->chid_chip = 0x8101;
-        chip_instance->chid_ecid = 0;
+    // &&
+    if(!result) {
+        if (chip_instance->chid_bord == 9) {
+            chip_instance->chid_bord = 0x20;
+            chip_instance->chid_chip = 0xfe00;
+            chip_instance->chid_ecid = 0;
+        }
+        chip_instance->chid_cpro = chip_instance->chid_epro = 1;
+        chip_instance->chid_csec = chip_instance->chid_esec = 1;
     }
     return result;
 }
 %end
 
 %ctor {
-    NSString *processName = NSProcessInfo.processInfo.processName;
+    NSString *processName = @(basename(argv[0]));
     if ([processName isEqualToString:@"MobileStorageMounter"]) {
         %init(Hook_MobileStorageMounter);
     }

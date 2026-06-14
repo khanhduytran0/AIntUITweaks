@@ -1,6 +1,7 @@
 @import Foundation;
 @import QuartzCore;
 @import UIKit;
+#include <libgen.h>
 
 @interface SBContinuitySessionSystemEventMonitor : NSObject
 - (BOOL)isUILocked;
@@ -43,7 +44,7 @@
 %end
 
 %ctor {
-    NSString *processName = NSProcessInfo.processInfo.processName;
+    NSString *processName = @(basename(argv[0]));
     if (@available(iOS 18.0, *)) {
         if ([processName isEqualToString:@"SpringBoard"]) {
             %init(Hook_SpringBoard_iOS18);

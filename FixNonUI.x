@@ -19,7 +19,7 @@ Boolean SMJobSubmit(CFStringRef domain, CFDictionaryRef job, id auth, CFErrorRef
 %end
 
 %ctor {
-    NSString *processName = NSProcessInfo.processInfo.processName;
+    NSString *processName = @(basename(argv[0]));
     if ([processName isEqualToString:@"hidd.nonui"]) {
         %init(Hook_NonUI);
     } else if ([processName isEqualToString:@"SwitchBoard"]) {

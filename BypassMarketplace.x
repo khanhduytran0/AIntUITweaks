@@ -1,4 +1,5 @@
 @import Foundation;
+#include <libgen.h>
 
 typedef CF_ENUM(uint64_t, EligibilityDomainType) {
     /// Install marketplace-distributed apps
@@ -100,7 +101,7 @@ int os_eligibility_get_domain_answer(EligibilityDomainType domain, EligibilityAn
 %end
 
 %ctor {
-    NSString *processName = NSProcessInfo.processInfo.processName;
+    NSString *processName = @(basename(argv[0]));
     if ([processName isEqualToString:@"managedappdistributiond"] || [processName isEqualToString:@"installd"]) {
         %init(Hook_os_eligibility_get_domain_answer);
     } else if ([processName isEqualToString:@"appstorecomponentsd"]) {

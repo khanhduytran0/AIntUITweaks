@@ -6,7 +6,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = aintuitweaks
 
-aintuitweaks_FILES = BypassMarketplace.x BypassMirroringUnlock.x FixDDI.x NineteenPatches.x FixNonUI.x
+aintuitweaks_FILES = BypassMarketplace.x BypassMirroringUnlock.x FixDDI.x NineteenPatches.x FixNonUI.x LiquidGlassDynamicIsland.x
 aintuitweaks_CFLAGS = -fobjc-arc
 aintuitweaks_FRAMEWORKS = IOKit
 aintuitweaks_PRIVATE_FRAMEWORKS = ServiceManagement
